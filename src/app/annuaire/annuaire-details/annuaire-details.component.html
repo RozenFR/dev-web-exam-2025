@@ -1,0 +1,14 @@
+<mat-card class="my-5 px-3">
+  <mat-card-actions class="d-flex justify-content-between">
+    <button mat-raised-button style="btn-danger" routerLink="/annuaire">Retour</button>
+    <button mat-raised-button style="bg-danger" (click)="remove()">Supprimer</button>
+  </mat-card-actions>
+  <mat-card-title>{{ annuaire()?.lastName + ' ' + annuaire()?.firstName }}</mat-card-title>
+  <mat-card-subtitle>{{ annuaire()?.job }}</mat-card-subtitle>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>Email : {{ annuaire()?.email }}</mat-list-item>
+      <mat-list-item>Date d'anniversaire : {{ annuaire()?.birthday | date: 'fullDate' }}</mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

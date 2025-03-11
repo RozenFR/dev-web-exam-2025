@@ -1,0 +1,6 @@
+export enum Job {
+  CEO = 'CEO',
+  ASSISTANT = 'ASSISTANT',
+  MANAGER = 'MANAGER',
+  DEVELOPER = 'DEVELOPER'
+}

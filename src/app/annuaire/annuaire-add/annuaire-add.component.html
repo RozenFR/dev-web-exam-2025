@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="mat-elevation-z8 d-flex">
+  <mat-card class="w-100">
+    <mat-card-title>Ajouter Annuaire</mat-card-title>
+    <mat-card-content class="d-flex flex-column w-100">
+      <!-- First Name -->
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" placeholder="Enter first name"/>
+        <mat-error *ngIf="form.get('firstName')?.hasError('required')">First Name is required</mat-error>
+        <mat-error *ngIf="form.get('firstName')?.hasError('minlength')">Minimum 2 characters required</mat-error>
+      </mat-form-field>
+
+      <!-- Last Name -->
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" placeholder="Enter last name"/>
+        <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required</mat-error>
+        <mat-error *ngIf="form.get('lastName')?.hasError('minlength')">Minimum 2 characters required</mat-error>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter email"/>
+        <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">Please enter a valid email</mat-error>
+      </mat-form-field>
+
+      <!-- Birthday -->
+      <mat-form-field appearance="fill">
+        <mat-label>Birthday</mat-label>
+        <input matInput formControlName="birthday" [matDatepicker]="picker" placeholder="Choose a date"/>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('birthday')?.hasError('required')">Birthday is required</mat-error>
+      </mat-form-field>
+
+      <!-- Job -->
+      <mat-form-field appearance="fill">
+        <mat-label>Job</mat-label>
+        <mat-select formControlName="job">
+          <mat-option *ngFor="let job of Object.values(Job)" [value]="job">{{ job }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('job')?.hasError('required')">Job is required</mat-error>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="form.invalid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

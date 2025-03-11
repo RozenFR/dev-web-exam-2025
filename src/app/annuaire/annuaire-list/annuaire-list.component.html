@@ -1,0 +1,7 @@
+<h1>Annuaires</h1>
+<button mat-raised-button color="primary" class="mx-1 align-self-end" [routerLink]="['create']">Ajouter</button>
+<div class="d-flex justify-content-start flex-wrap">
+  @for (annuaire of this.annuaireService.annuaires(); track annuaire.id) {
+    <app-annuaire-card [annuaire]="annuaire"></app-annuaire-card>
+  }
+</div>
